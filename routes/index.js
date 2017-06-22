@@ -5,7 +5,6 @@ var db = require('../models/db')
 router.get('/', function(req, res, next) {
   var sql = "select * from user"
   db.operate(sql, function (error, data) {
-    console.log(data);
     res.render('index', { title: 'Express' });
   });
 });

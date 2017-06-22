@@ -1,0 +1,24 @@
+/* reset */
+body{
+  margin: 0;
+}
+
+body{
+  background-color: #ededed;
+}
+
+.section{
+  background-color: #fff;
+  margin: 15px 0;
+  padding: 10px;
+}
+
+.header{
+  height: 80px;
+  margin-top: 0;
+}
+
+.footer{
+  height: 80px;
+  margin-bottom: 0;
+}
