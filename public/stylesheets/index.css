@@ -7,6 +7,11 @@ body{
   background-color: #ededed;
 }
 
+.hr{
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ededed;
+}
+
 .section{
   background-color: #fff;
   margin: 15px 0;
@@ -14,11 +19,61 @@ body{
 }
 
 .header{
-  height: 80px;
+  height: 60px;
   margin-top: 0;
+}
+
+.main{
+  margin-bottom: 80px;
 }
 
 .footer{
   height: 80px;
   margin-bottom: 0;
+}
+
+.section.aside{
+  padding: 0;
+}
+
+.user > div{
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.new-topic{
+
+}
+
+.list-node > a{
+  display: inline-block;
+  padding: 3px 8px;
+  border: 1px solid #ededed;
+  border-radius: 10px;
+  margin: 2px;
+}
+
+.topic > div{
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.topic-summary{
+  vertical-align: top;
+}
+
+.topic-logo{
+  height: 50px;
+  width: 50px;
+}
+
+.pagination.main{
+  margin: 8px 0;
+}
+
+.comment{
+  width: 100%;
+  overflow: auto;
+  word-break: break-all;
 }
