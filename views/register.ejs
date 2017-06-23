@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>「千古史话」</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/index.css">
+  </head>
+  <body>
+    <div class="header section">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-offset-1 col-md-5">
+          </div>
+          <div class="col-xs-12 col-md-5">
+            <ul class="nav nav-pills pull-right">
+              <li role="presentation" class="active"><a href="/">首页</a></li>
+              <li role="presentation"><a href="/user">个人中心</a></li>
+              <li role="presentation"><a href="#">登出</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12 col-sm-offset-1 col-sm-7 col-md-offset-1 col-md-7 col-lg-offset-1 col-lg-7">
+            <div class="section">
+              <ol class="breadcrumb">
+                <li><a href="#">v2ex</a></li>
+                <li class="active">注册</li>
+              </ol>
+              <form>
+                <div class="form-group">
+                  <label for="username">昵称</label>
+                  <input type="text" class="form-control" id="username" placeholder="Username：给自己起一个有趣的昵称吧！">
+                </div>
+                <div class="form-group">
+                  <label for="email">邮箱</label>
+                  <input type="email" class="form-control" id="email" placeholder="Email：您的邮箱就是登录帐号">
+                </div>
+                <div class="form-group">
+                  <label for="password">密码</label>
+                  <input type="password" class="form-control" id="password" placeholder="Password">
+                </div>
+                <a class="btn btn-primary">注册</a>
+              </form>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+            <div class="section aside">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <span>今日热议主题</span>
+                </li>
+                <% for(var i=0; i<10; i++){ %>
+                  <li class="list-group-item">
+                    <div class="topic">
+                      <div class="">
+                        <img src="/images/1.jpg" width="30" height="30" alt="">
+                      </div>
+                      <div class="topic-summary">
+                        <p>
+                          Lorem ipsum dolor sit amet
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                <% } %>
+              </ul>
+            </div>
+            <div class="section aside">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <span>新增节点</span>
+                </li>
+                <li class="list-group-item">
+                  <div class="list-node">
+                    <a href="">北京</a>
+                    <a href="">上海</a>
+                    <a href="">南京</a>
+                    <a href="">杭州</a>
+                    <a href="">齐齐哈尔</a>
+                    <a href="">哈尔滨</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="section aside">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <span>社区运行状况</span>
+                </li>
+                <li class="list-group-item">
+                  <p>会员 &nbsp<a href="">100023</a></p>
+                  <p>主题 &nbsp<a href="">100023</a></p>
+                  <p>回复 &nbsp<a href="">100023</a></p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer section">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-offset-2 col-md-3">
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.js"></script>
+  </body>
+</html>

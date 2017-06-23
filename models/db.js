@@ -3,23 +3,21 @@ var pool = mysql.createPool({
   host: "127.0.0.1",
   user: "root",
   password: "root",
-  database: "ncu",
+  database: "novelTalk",
   port: 3306
 });
 var handle = {
   operate: function (sql, callback) {
     pool.getConnection(function (error, connection) {
       if (error) {
-        callback(true);
-        return ;
+        return callback(true);
       };
       connection.query(sql, function (error, results, fileds) {
         connection.release();
         if (error) {
-          callback(true);
-          return ;
+          return callback(true);
         };
-        callback(false, results)
+        return callback(false, results);
       });
     })
   }
