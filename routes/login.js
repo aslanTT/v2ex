@@ -3,10 +3,14 @@ var router = express.Router();
 var db = require('../models/db')
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  var sql = "select * from user"
-  db.operate(sql, function (error, data) {
-    res.render('login', { title: 'Express' });
-  });
+  res.render('login', {});
+  next();
 });
+router.post('/', function (req, res, next) {
+  var sql = 'select * from user where email=\"' + req.form.email +
+            '\")';
+  db.operate(sql, function (error, data) {
+  });
+})
 
 module.exports = router;

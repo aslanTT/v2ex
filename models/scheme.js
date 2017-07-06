@@ -6,7 +6,7 @@ var sql = 'create table user (' +
           'password varchar(255),' +
           'email varchar(255),' +
           'sex varchar(255),' +
-          'joinDate varchar(255),' +
+          'date varchar(255),' +
           'userlogo varchar(255),' +
           'primary key(id)' +
           ');';
