@@ -34,16 +34,17 @@
                 <li><a href="#">v2ex</a></li>
                 <li class="active">登录</li>
               </ol>
-              <form>
+              <form action="/login" method="post">
                 <div class="form-group">
                   <label for="email">帐号</label>
-                  <input type="email" class="form-control" id="email" placeholder="Email：您的邮箱就是登录帐号">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Email：您的邮箱就是登录帐号">
                 </div>
                 <div class="form-group">
                   <label for="password">密码</label>
-                  <input type="password" class="form-control" id="password" placeholder="Password">
+                  <input type="password" class="form-control" name="password" id="password" placeholder="Password">
                 </div>
-                <a class="btn btn-primary">登录</a>
+                <input type="submit" class="btn btn-primary" name="" value="登录">
+
               </form>
             </div>
           </div>

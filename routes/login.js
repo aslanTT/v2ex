@@ -7,9 +7,13 @@ router.get('/', function(req, res, next) {
   next();
 });
 router.post('/', function (req, res, next) {
-  var sql = 'select * from user where email=\"' + req.form.email +
-            '\")';
+  var sql = 'select * from user where email=\"' + req.body.email +
+            '\"';
   db.operate(sql, function (error, data) {
+    if (error) {
+      res.send(JSON.stringify({'message':'fail'}));
+    };
+    res.render('index',{});
   });
 })
 

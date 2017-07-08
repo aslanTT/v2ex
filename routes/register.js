@@ -9,13 +9,16 @@ router.get('/', function(req, res, next) {
 router.post('/', function (req, res, next) {
   var date = new Date().toLocaleString();
   var sql = 'insert into user(username,email,password,date) values(' +
-            req.form.username + ',' +
-            req.form.email + ',' +
-            req.form.password + ',' +
+            req.body.username + ',' +
+            req.body.email + ',' +
+            req.body.password + ',' +
             date +
             ')';
   db.operate(sql, function (error, data) {
-    res.
+    if (error) {
+      res.send(JSON.stringify({'message':'fail'}))
+    }
+    res.render('index', {})
   });
 })
 module.exports = router;
