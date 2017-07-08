@@ -1,6 +1,6 @@
 var db = require('./db');
 
-var sql = 'create table user (' +
+var user = 'create table user (' +
           'id int auto_increment,' +
           'username varchar(255),' +
           'password varchar(255),' +
@@ -11,7 +11,7 @@ var sql = 'create table user (' +
           'primary key(id)' +
           ');';
 
-var sql = 'create table topic(' +
+var topic = 'create table topic(' +
           'id int auto_increment,' +
           'user_id int,' +
           'node_id int,' +
@@ -22,7 +22,7 @@ var sql = 'create table topic(' +
           'primary key(id)' +
           ');';
 
-var sql = 'create table comment(' +
+var comment = 'create table comment(' +
           'id int auto_increment,' +
           'user_id int,' +
           'topic_id int,' +
@@ -31,7 +31,7 @@ var sql = 'create table comment(' +
           'primary key(id)' +
           ');';
 
-var sql = 'create table node(' +
+var node = 'create table node(' +
           'id int auto_increment,' +
           'name varchar(255),' +
           'date varchar(255),' +

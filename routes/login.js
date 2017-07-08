@@ -3,7 +3,7 @@ var router = express.Router();
 var db = require('../models/db')
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('login', {});
+  return res.render('login', {});
   next();
 });
 router.post('/', function (req, res, next) {
@@ -11,9 +11,9 @@ router.post('/', function (req, res, next) {
             '\"';
   db.operate(sql, function (error, data) {
     if (error) {
-      res.send(JSON.stringify({'message':'fail'}));
+      return res.send(JSON.stringify({'message':'fail'}));
     };
-    res.render('index',{});
+    return res.render('index',{user:data[0]});
   });
 })
 
