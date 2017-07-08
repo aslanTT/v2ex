@@ -10,6 +10,7 @@ var topic = require('./routes/topic');
 var user = require('./routes/user');
 var login = require('./routes/login');
 var register = require('./routes/register');
+var publish = require('./routes/publish');
 var app = express();
 
 // view engine setup
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/topic/:id', topic);
+app.use('/publish', publish);
 app.use('/user', user);
 app.use('/login', login);
 app.use('/register', register);

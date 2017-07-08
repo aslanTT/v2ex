@@ -7,13 +7,27 @@ router.get('/', function(req, res, next) {
   next();
 });
 router.post('/', function (req, res, next) {
-  var sql = 'select * from user where email=\"' + req.body.email +
+  var user = 'select * from user where email=\"' + req.body.email +
             '\"';
-  db.operate(sql, function (error, data) {
+  var nodes = 'select * from node;';
+  db.operate(nodes, function (error, data) {
     if (error) {
       return res.send(JSON.stringify({'message':'fail'}));
     };
-    return res.render('index',{user:data[0]});
+    nodes = data
+    return null;
+  });
+  db.operate(user, function (error, data) {
+    if (error) {
+      return res.send(JSON.stringify({'message':'fail'}));
+    };
+    var user = data[0];
+    res.cookie("username", user.username);
+    res.cookie("user_id", user.id);
+    return res.render('index',{
+      user:user,
+      nodes: nodes
+    });
   });
 })
 
