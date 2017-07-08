@@ -15,12 +15,7 @@
           <div class="col-md-offset-1 col-md-5">
           </div>
           <div class="col-xs-12 col-md-5">
-            <ul class="nav nav-pills pull-right">
-              <li role="presentation" class="active"><a href="/">首页</a></li>
-              <li role="presentation"><a href="/user">个人中心</a></li>
-              <li role="presentation"><a href="/login">登录</a></li>
-              <li role="presentation"><a href="/register">注册</a></li>
-            </ul>
+            <%- include('common/header', {}) %>
           </div>
         </div>
       </div>
@@ -53,54 +48,13 @@
           </div>
           <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
             <div class="section aside">
-              <ul class="list-group">
-                <li class="list-group-item">
-                  <span>今日热议主题</span>
-                </li>
-                <% for(var i=0; i<10; i++){ %>
-                  <li class="list-group-item">
-                    <div class="topic">
-                      <div class="">
-                        <img src="/images/1.jpg" width="30" height="30" alt="">
-                      </div>
-                      <div class="topic-summary">
-                        <p>
-                          Lorem ipsum dolor sit amet
-                        </p>
-                      </div>
-                    </div>
-                  </li>
-                <% } %>
-              </ul>
+              <%- include('common/hotTopic', {}) %>
             </div>
             <div class="section aside">
-              <ul class="list-group">
-                <li class="list-group-item">
-                  <span>新增节点</span>
-                </li>
-                <li class="list-group-item">
-                  <div class="list-node">
-                    <a href="">北京</a>
-                    <a href="">上海</a>
-                    <a href="">南京</a>
-                    <a href="">杭州</a>
-                    <a href="">齐齐哈尔</a>
-                    <a href="">哈尔滨</a>
-                  </div>
-                </li>
-              </ul>
+              <%- include('common/newNode', {}) %>
             </div>
             <div class="section aside">
-              <ul class="list-group">
-                <li class="list-group-item">
-                  <span>社区运行状况</span>
-                </li>
-                <li class="list-group-item">
-                  <p>会员 &nbsp<a href="">100023</a></p>
-                  <p>主题 &nbsp<a href="">100023</a></p>
-                  <p>回复 &nbsp<a href="">100023</a></p>
-                </li>
-              </ul>
+              <%- include('common/siteCondition', {}) %>
             </div>
           </div>
         </div>
