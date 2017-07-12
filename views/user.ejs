@@ -32,13 +32,13 @@
                       <img src="/images/1.jpg" width="50" height="50" alt="">
                     </div>
                     <div class="user-name">
-                      sky123
+                      {%= options.username %}
                     </div>
                   </div>
                 </li>
                 <li class="list-group-item">
                   <div class="new-topic">
-                    <span class="glyphicon glyphicon-pencil"></span> &nbsp 创作新主题
+                    <span class="glyphicon glyphicon-pencil"></span> &nbsp <a href="/publish">创作新主题</a>
                   </div>
                 </li>
                 <li class="list-group-item">
@@ -54,7 +54,7 @@
               </ul>
             </div>
             <ul class="list-group">
-              <% for(var i=0; i<10; i++){ %>
+              <% for(var i=0; i<options.topics.length; i++){ %>
                 <li class="list-group-item">
                   <div class="topic">
                     <div class="topic-logo">
@@ -62,9 +62,9 @@
                     </div>
                     <div class="topic-summary">
                       <p>
-                        Lorem ipsum dolor sit amet
+                        <%= options.topics[i].title %>
                       </p>
-                      <span><a href="#">sky123</a></span>
+                      <span><a href="#"><%= options.topics[i].user_id %></a></span>
                     </div>
                   </div>
                 </li>
