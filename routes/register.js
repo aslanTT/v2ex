@@ -7,18 +7,16 @@ router.get('/', function(req, res, next) {
   next();
 });
 router.post('/', function (req, res, next) {
-  var date = new Date().toLocaleString();
-  var sql = 'insert into user(username,email,password,date) values(\"' +
-            req.body.username + '\",\"' +
-            req.body.email + '\",\"' +
-            req.body.password + '\",\"' +
-            date +
-            '\")';
-  db.operate(sql, function (error, data) {
-    if (error) {
-      return res.send(JSON.stringify({'message':'fail'}))
-    }
-    return res.render('login', {})
+  var user = db.table('user').add({
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password,
+    date: new Date().toLocaleString()
   });
-})
+  user.then(function () {
+    return res.render('login', {});
+  }).catch(function () {
+    return res.send(JSON.stringify({'message':'fail'}))
+  })
+});
 module.exports = router;

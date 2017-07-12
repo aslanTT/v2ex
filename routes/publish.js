@@ -3,28 +3,25 @@ var router = express.Router();
 var db = require('../models/db')
 /* GET home page. */
 router.get("/", function(req, res, next) {
-  var sql = 'select * from node;';
-  db.operate(sql, function (error, data) {
-    if (error) {
-      return res.send(JSON.stringify({'message':'fail'}));
-    };
+  var node = db.table('node').select();
+  node.then(function (data) {
     return res.render('publish', { nodes: data });
+  }).catch(function (error) {
+    return res.send(JSON.stringify({'message':'fail'}));
   });
 });
 router.post("/", function(req, res, next) {
-  var date = new Date().toLocaleString();
-  var sql = "insert into topic(user_id, node_id, title, content, date) values(\"" +
-            req.cookies.user_id + "\",\"" +
-            req.body.node_id + "\",\"" +
-            req.body.title + "\",\"" +
-            req.body.content + "\",\"" +
-            date +
-            "\")";
-  db.operate(sql, function (error, data) {
-    if (error) {
-      return res.send(JSON.stringify({'message':'fail'}));
-    };
+  var topic = db.table('topic').add({
+    user_id: req.cookies.user_id,
+    node_id: req.body.node_id,
+    title: req.body.title,
+    content: req.body.content,
+    date: new Date().toLocaleString()
+  });
+  topic.then(function () {
     return res.render('topic',{});
+  }).catch(function (error) {
+    return res.send(JSON.stringify({'message':'fail'}));
   });
 });
 module.exports = router;
