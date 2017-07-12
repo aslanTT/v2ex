@@ -31,20 +31,24 @@
                     <li><a href="#">v2ex</a></li>
                     <li class="active">Data</li>
                   </ol>
-                  <h2>集合论</h2>
+                  <h2>
+                    <%= options.topic.title %>
+                  </h2>
                   <p class="hr">
                     <span>
-                      <a href="#">sky123</a> &nbsp
+                      <a href="#">
+                        <%= options.topic.user_id %>
+                      </a> &nbsp
                     </span>
                     <span>
-                      2017-06-22 19:01:55 &nbsp
+                      <%= options.topic.date %> &nbsp
                     </span>
                     <span>
                       123点击
                     </span>
                   </p>
                   <p class="hr">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    <%= options.topic.content %>
                   </p>
                   <p>
                     <div class="list-node">

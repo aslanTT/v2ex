@@ -26,7 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/topic/:id', topic);
+app.use('/topic', topic);
 app.use('/publish', publish);
 app.use('/user', user);
 app.use('/login', login);
