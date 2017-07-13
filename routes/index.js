@@ -8,14 +8,15 @@ router.get('/', function (req, res, next) {
     nodes: [],
     topics: []
   };
-  var nodes = db.table('node').select();
-  var topics = nodes.then(function (data) {
+  db.table('node').select()
+  .then(function (data) {
     options.nodes = data;
     return db.table('topic').select();
-  })
-  topics.then(function (data) {
+  }).then(function (data) {
     options.topics = data;
     res.render('index', options);
+  }).catch(function (error) {
+    console.error(error);
   });
 });
 

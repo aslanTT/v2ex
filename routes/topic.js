@@ -6,15 +6,15 @@ router.get("/:id", function(req, res, next) {
   var options = {
     topic: {}
   };
-  var topic = db.table('topic').where({
+  db.table('topic').where({
     id: req.params.id
-  }).select();
-  topic.then(function (data) {
+  }).select()
+  .then(function (data) {
     options.topic = data[0];
     return res.render('topic', { options: options });
   }).catch(function (error) {
     return res.send(JSON.stringify({'message':'fail'}))
-  })
+  });
 });
 
 module.exports = router;

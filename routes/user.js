@@ -9,14 +9,12 @@ router.get('/', function(req, res, next) {
     nodes: [],
     topics: []
   };
-  var node = db.table('node').select();
-  var topic = node.then(function (data) {
+  console.log(12,req.cookies.username);
+  db.table('node').select()
+  .then(function (data) {
     options.nodes = data;
     return db.table('topic').select();
-  }).catch(function (error) {
-    return res.send(JSON.stringify({'message':'fail'}))
-  });
-  topic.then(function (data) {
+  }).then(function (data) {
     options.topics = data;
     return res.render('user', { options: options });
   }).catch(function (error) {

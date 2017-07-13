@@ -8,24 +8,18 @@ router.get('/', function(req, res, next) {
 });
 router.post('/', function (req, res, next) {
   var options = {};
-  var nodes = db.table('node').select();
-  var topics = nodes.then(function (data) {
-    options.nodes = data;
-    return db.table('topic').select();
-  })
-  var user = topics.then(function (data) {
-    options.topics = data;
-    return db.table('user').where({
-      email: req.body.email,
-      password: req.body.password
-    }).select();
-  });
-  user.then(function (data) {
+  db.table('user').where({
+    email: req.body.email,
+    password: req.body.password
+  }).select()
+  .then(function (data) {
     options.user = data[0];
-    res.cookie('username', user.username);
-    res.cookie('user_id', user.id);
-    res.render('index',options);
+    res.cookie('username', options.user.username, { maxAge: 900000, httpOnly: true });
+    res.cookie('user_id', options.user.id, { maxAge: 900000, httpOnly: true });
+    res.redirect('/');
+  }).catch(function (error) {
+    console.error(error);
   });
-})
+});
 
 module.exports = router;

@@ -11,14 +11,13 @@ router.get("/", function(req, res, next) {
   });
 });
 router.post("/", function(req, res, next) {
-  var topic = db.table('topic').add({
+  db.table('topic').add({
     user_id: req.cookies.user_id,
     node_id: req.body.node_id,
     title: req.body.title,
     content: req.body.content,
     date: new Date().toLocaleString()
-  });
-  topic.then(function () {
+  }).then(function () {
     return res.render('topic',{});
   }).catch(function (error) {
     return res.send(JSON.stringify({'message':'fail'}));
