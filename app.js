@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var db = require('./models/db');
 var index = require('./routes/index');
 var topic = require('./routes/topic');
 var user = require('./routes/user');
@@ -24,6 +25,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+db.table('node').select()
+.then(function (data) {
+  app.locals.nodes = data;
+  return db.table('topic').select();
+}).then(function (data) {
+  app.locals.topics = data;
+});
 
 app.use('/', index);
 app.use('/topic', topic);

@@ -15,7 +15,7 @@
           <div class="col-md-offset-1 col-md-5">
           </div>
           <div class="col-xs-12 col-md-5">
-            <%- include('common/header', {}) %>
+            <%- include('common/header', {user_id: req.cookies.user_id}) %>
           </div>
         </div>
       </div>
@@ -32,7 +32,7 @@
                       <img src="/images/1.jpg" width="50" height="50" alt="">
                     </div>
                     <div class="user-name">
-                      <%= options.username %>
+                      <%= req.cookies.username %>
                     </div>
                   </div>
                 </li>
@@ -54,7 +54,7 @@
               </ul>
             </div>
             <ul class="list-group">
-              <% for(var i=0; i<options.topics.length; i++){ %>
+              <% for(var i=0; i<topics.length; i++){ %>
                 <li class="list-group-item">
                   <div class="topic">
                     <div class="topic-logo">
@@ -62,9 +62,9 @@
                     </div>
                     <div class="topic-summary">
                       <p>
-                        <%= options.topics[i].title %>
+                        <%= topics[i].title %>
                       </p>
-                      <span><a href="#"><%= options.topics[i].user_id %></a></span>
+                      <span><a href="#"><%= topics[i].user_id %></a></span>
                     </div>
                   </div>
                 </li>

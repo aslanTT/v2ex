@@ -3,12 +3,7 @@ var router = express.Router();
 var db = require('../models/db')
 /* GET home page. */
 router.get("/", function(req, res, next) {
-  var node = db.table('node').select();
-  node.then(function (data) {
-    return res.render('publish', { nodes: data });
-  }).catch(function (error) {
-    return res.send(JSON.stringify({'message':'fail'}));
-  });
+  return res.render('publish',{req:req});
 });
 router.post("/", function(req, res, next) {
   db.table('topic').add({
