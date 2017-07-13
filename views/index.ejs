@@ -39,10 +39,12 @@
                       <img src="/images/1.jpg" width="100%" height="100%" alt="">
                     </div>
                     <div class="topic-summary">
-                      <p>
+                      <a href="<%= '/topic/' + topics[i].id %>">
                         <%= topics[i].title %>
+                      </a>
+                      <p>
+                        <a href="#"><%= req.cookies.username %></a>
                       </p>
-                      <span><a href="#"><%= req.cookies.username %></a></span>
                     </div>
                   </div>
                 </li>

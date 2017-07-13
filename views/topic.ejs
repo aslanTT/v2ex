@@ -60,7 +60,7 @@
               </ul>
             </div>
             <ul class="list-group">
-              <% for(var i=0; i<10; i++){ %>
+              <% for(var i=0; i<comments.length; i++){ %>
                 <li class="list-group-item">
                   <div class="topic">
                     <div class="topic-logo">
@@ -68,9 +68,12 @@
                     </div>
                     <div class="topic-summary">
                       <p>
-                        Lorem ipsum dolor sit amet
+                        <%= comments[i].content %>
+                        &nbsp&nbsp <%= comments[i].date %>
                       </p>
-                      <span><a href="#">sky123</a></span>
+                      <span>
+                        <a href="#"><%= comments[i].user_id %></a>
+                      </span>
                     </div>
                   </div>
                 </li>
@@ -98,15 +101,18 @@
               </li>
             </ul>
             <div class="section aside">
-              <ul class="list-group">
-                <li class="list-group-item">
-                  添加一条回复
-                </li>
-                <li class="list-group-item">
-                  <textarea class="comment" rows="8" cols="80"></textarea>
-                  <a href="#" class="btn btn-primary">回复</a>
-                </li>
-              </ul>
+              <form action="/comment" method="post">
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    添加一条回复
+                  </li>
+                  <li class="list-group-item">
+                    <input type="hidden" name="topic_id" value="<%= topic.id %>">
+                    <textarea class="comment" name="content" rows="8" cols="80"></textarea>
+                    <input type="submit" class="btn btn-primary" value="回复">
+                  </li>
+                </ul>
+              </form>
             </div>
           </div>
           <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
