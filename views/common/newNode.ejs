@@ -4,12 +4,9 @@
   </li>
   <li class="list-group-item">
     <div class="list-node">
-      <a href="">北京</a>
-      <a href="">上海</a>
-      <a href="">南京</a>
-      <a href="">杭州</a>
-      <a href="">齐齐哈尔</a>
-      <a href="">哈尔滨</a>
+      <% for(var i=0; i<nodes.length; i++){ %>
+        <a href="#"><%= nodes[i].name %></a>
+      <% } %>
     </div>
   </li>
 </ul>

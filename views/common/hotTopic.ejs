@@ -2,7 +2,7 @@
   <li class="list-group-item">
     <span>今日热议主题</span>
   </li>
-  <% for(var i=0; i<10; i++){ %>
+  <% for(var i=0; i<topics.length; i++){ %>
     <li class="list-group-item">
       <div class="topic">
         <div class="">
@@ -10,7 +10,7 @@
         </div>
         <div class="topic-summary">
           <p>
-            Lorem ipsum dolor sit amet
+            <%= topics[i].title %>
           </p>
         </div>
       </div>

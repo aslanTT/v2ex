@@ -13,7 +13,7 @@ router.post("/", function(req, res, next) {
     content: req.body.content,
     date: new Date().toLocaleString()
   }).then(function () {
-    return res.render('topic',{});
+    return res.redirect('/publish');
   }).catch(function (error) {
     return res.send(JSON.stringify({'message':'fail'}));
   });
