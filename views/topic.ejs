@@ -15,7 +15,7 @@
           <div class="col-md-offset-1 col-md-5">
           </div>
           <div class="col-xs-12 col-md-5">
-            <%- include('common/header', {}) %>
+            <%- include('common/header', {user_id: req.cookies.user_id}) %>
           </div>
         </div>
       </div>
@@ -32,23 +32,23 @@
                     <li class="active">Data</li>
                   </ol>
                   <h2>
-                    <%= options.topic.title %>
+                    <%= topic.title %>
                   </h2>
                   <p class="hr">
                     <span>
                       <a href="#">
-                        <%= options.topic.user_id %>
+                        <%= topic.user_id %>
                       </a> &nbsp
                     </span>
                     <span>
-                      <%= options.topic.date %> &nbsp
+                      <%= topic.date %> &nbsp
                     </span>
                     <span>
                       123点击
                     </span>
                   </p>
                   <p class="hr">
-                    <%= options.topic.content %>
+                    <%= topic.content %>
                   </p>
                   <p>
                     <div class="list-node">
@@ -124,7 +124,7 @@
                 </li>
                 <li class="list-group-item">
                   <div class="new-topic">
-                    <span class="glyphicon glyphicon-pencil"></span> &nbsp 创作新主题
+                    <span class="glyphicon glyphicon-pencil"></span> &nbsp <a href="/publish">创作新主题</a>
                   </div>
                 </li>
                 <li class="list-group-item">
