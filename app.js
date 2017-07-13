@@ -32,7 +32,18 @@ db.table('node').select()
   return db.table('topic').select();
 }).then(function (data) {
   app.locals.topics = data;
-});
+  return db.table('user').count('id');
+}).then(function (data) {
+  app.locals.userCount = data;
+  return db.table('topic').count('id');
+}).then(function (data) {
+  app.locals.topicsCount = data;
+  return db.table('comment').count('id');
+}).then(function (data) {
+  app.locals.commentCount = data;
+}).catch(function (error) {
+  console.log(error);
+})
 
 app.use('/', index);
 app.use('/topic', topic);
