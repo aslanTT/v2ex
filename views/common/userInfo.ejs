@@ -11,7 +11,7 @@
   </li>
   <li class="list-group-item">
     <div class="new-topic">
-      <span class="glyphicon glyphicon-pencil"></span> &nbsp <a href="/publish">创作新主题</a> 
+      <span class="glyphicon glyphicon-pencil"></span> &nbsp <a href="/publish">创作新主题</a>
     </div>
   </li>
   <li class="list-group-item">
@@ -21,7 +21,14 @@
   </li>
   <li class="list-group-item">
     <div class="user-money">
-      <span class="glyphicon glyphicon-usd"></span> &nbsp 金币：1000
+      <span class="glyphicon glyphicon-usd"></span> &nbsp 金币：
+      <%= user.money %>
+    </div>
+  </li>
+  <li class="list-group-item">
+    <div class="user-money">
+      <span class="glyphicon glyphicon-phone"></span> &nbsp
+      <a href="/sign">签到</a>
     </div>
   </li>
 </ul>

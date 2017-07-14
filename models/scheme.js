@@ -8,6 +8,7 @@ var user = 'create table user (' +
           'sex varchar(255),' +
           'date varchar(255),' +
           'userlogo varchar(255),' +
+          'money int default 0,' +
           'primary key(id)' +
           ');';
 
@@ -38,9 +39,20 @@ var node = 'create table node(' +
           'primary key(id)' +
           ');';
 
-db.operate(sql, function (error, data) {
-  if (error) {
-    return ;
-  }
-  return ;
+var message = 'create table message(' +
+              'id int auto_increment,' +
+              'receiver_id int,' +
+              'sender_id int,' +
+              'title varchar(255),' +
+              'content text,' +
+              'date varchar(255),' +
+              'primary key(id)' +
+              ');';
+
+var sql = user
+console.log(sql);
+db.execute(sql).then(function (data) {
+  console.log(data);
+}).catch(function (error) {
+  console.log(error);
 });

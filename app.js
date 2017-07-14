@@ -10,10 +10,12 @@ var index = require('./routes/index');
 var topic = require('./routes/topic');
 var user = require('./routes/user');
 var login = require('./routes/login');
+var logout = require('./routes/logout');
 var register = require('./routes/register');
 var publish = require('./routes/publish');
 var comment = require('./routes/comment');
 var node = require('./routes/node');
+var sign = require('./routes/sign');
 var app = express();
 
 // view engine setup
@@ -55,6 +57,8 @@ app.use('/login', login);
 app.use('/comment', comment);
 app.use('/register', register);
 app.use('/node', node);
+app.use('/sign', sign);
+app.use('/logout', logout);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
