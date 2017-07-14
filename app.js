@@ -13,6 +13,7 @@ var login = require('./routes/login');
 var register = require('./routes/register');
 var publish = require('./routes/publish');
 var comment = require('./routes/comment');
+var node = require('./routes/node');
 var app = express();
 
 // view engine setup
@@ -53,6 +54,7 @@ app.use('/user', user);
 app.use('/login', login);
 app.use('/comment', comment);
 app.use('/register', register);
+app.use('/node', node);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
