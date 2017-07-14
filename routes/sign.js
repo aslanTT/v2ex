@@ -7,7 +7,13 @@ router.get('/', function (req, res, next) {
     id: req.cookies.user_id
   }).updateInc('money', 10)
   .then(function (data) {
-    res.render('index', { req: req });
+    return db.table('user').where({
+      id: req.cookies.user_id
+    }).update({
+      lastLoginDate: new Date().toLocaleString()
+    });
+  }).then(function (data) {
+    return res.redirect('/');
   }).catch(function (error) {
     console.log(error);
   });

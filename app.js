@@ -48,7 +48,15 @@ db.table('node').select()
 }).catch(function (error) {
   console.log(error);
 })
-
+app.all('*',function (req, res, next) {
+  db.table('user').where({
+    id: req.cookies.user_id
+  }).select()
+  .then(function (data) {
+    app.locals.user = data[0] || {};
+  });
+  next();
+});
 app.use('/', index);
 app.use('/topic', topic);
 app.use('/publish', publish);

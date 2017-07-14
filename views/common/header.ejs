@@ -1,6 +1,6 @@
 <ul class="nav nav-pills pull-right">
   <li role="presentation" class="active"><a href="/">首页</a></li>
-  <% if(user_id === 'false') {%>
+  <% if(user_id === 'undefined') {%>
   <li role="presentation"><a href="/login">登录</a></li>
   <li role="presentation"><a href="/register">注册</a></li>
   <% } else if(user_id > 0) { %>

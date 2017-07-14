@@ -5,7 +5,7 @@ var db = require('../models/db');
 router.get('/', function(request, res, next) {
   var req = {
     cookies:{
-      user_id: 'false'
+      user_id: 'undefined'
     }
   }
   if (request.hasOwnProperty('user_id')) {

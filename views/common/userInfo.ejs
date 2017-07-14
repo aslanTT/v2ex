@@ -1,3 +1,4 @@
+<% if(user !== {}){ %>
 <ul class="list-group">
   <li class="list-group-item">
     <div class="user">
@@ -32,3 +33,14 @@
     </div>
   </li>
 </ul>
+<% } else { %>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <div class="user">
+        <div class="user-name">
+          技术就是力量
+        </div>
+      </div>
+    </li>
+  </ul>
+<% } %>

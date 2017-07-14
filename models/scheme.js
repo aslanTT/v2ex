@@ -9,6 +9,7 @@ var user = 'create table user (' +
           'date varchar(255),' +
           'userlogo varchar(255),' +
           'money int default 0,' +
+          'lastLoginDate varchar(255),' +
           'primary key(id)' +
           ');';
 
