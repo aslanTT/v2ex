@@ -5,7 +5,9 @@
   <li class="list-group-item">
     <div class="list-node">
       <% for(var i=0; i<nodes.length; i++){ %>
-        <a href="#"><%= nodes[i].name %></a>
+        <a href="<%= '/node/' + nodes[i].id %>">
+          <%= nodes[i].name %>
+        </a>
       <% } %>
     </div>
   </li>
