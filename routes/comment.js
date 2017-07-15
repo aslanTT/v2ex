@@ -8,10 +8,10 @@ router.post("/", function(req, res, next) {
     topic_id: req.body.topic_id,
     comment_content: req.body.content,
     date: new Date().toLocaleString()
-  }).then(function () {
+  }).then(function (data) {
     return res.redirect('/topic/' + req.body.topic_id);
   }).catch(function (error) {
-    return res.send(JSON.stringify({'message':'fail'}));
+    console.log(error);
   });
 });
 module.exports = router;

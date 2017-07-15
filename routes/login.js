@@ -13,9 +13,8 @@ router.post('/', function (req, res, next) {
   }).select()
   .then(function (data) {
     user = data[0];
-    console.log(user);
     res.cookie('username', user.username, { maxAge: 9000000, httpOnly: true });
-    res.cookie('user_id', user.id, { maxAge: 9000000, httpOnly: true });
+    res.cookie('user_id', user.user_id, { maxAge: 9000000, httpOnly: true });
     res.cookie('money', user.money, { maxAge: 9000000, httpOnly: true });
     res.redirect('/');
   }).catch(function (error) {

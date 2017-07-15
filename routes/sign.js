@@ -8,7 +8,7 @@ router.get('/', function (req, res, next) {
   }).updateInc('money', 10)
   .then(function (data) {
     return db.table('user').where({
-      id: req.cookies.user_id
+      user_id: req.cookies.user_id
     }).update({
       lastLoginDate: new Date().toLocaleString()
     });

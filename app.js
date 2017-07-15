@@ -30,6 +30,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.all('*',function (req, res, next) {
   if (req.cookies.user_id === undefined) {
     res.cookie('username', 'undefined', { maxAge: 9000000, httpOnly: true });
@@ -39,20 +40,20 @@ app.all('*',function (req, res, next) {
   db.table('node').select()
   .then(function (data) {
     app.locals.nodes = data;
-    return db.table('topic').join('user on topic.user_id = user.id').select();
+    return db.table('topic').join('user on topic.user_id = user.user_id').select();
   }).then(function (data) {
     app.locals.topics = data;
-    return db.table('user').count('id');
+    return db.table('user').count('user_id');
   }).then(function (data) {
     app.locals.userCount = data;
-    return db.table('topic').count('id');
+    return db.table('topic').count('topic_id');
   }).then(function (data) {
     app.locals.topicsCount = data;
-    return db.table('comment').count('id');
+    return db.table('comment').count('comment_id');
   }).then(function (data) {
     app.locals.commentCount = data;
     return db.table('user').where({
-      id: req.cookies.user_id
+      user_id: req.cookies.user_id
     }).select();
   }).then(function (data) {
       app.locals.user = data.length === 0 ? null : data[0];

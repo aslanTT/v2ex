@@ -4,7 +4,7 @@ var db = require('../models/db');
 
 /* GET users listing. */
 router.get('/:id', function(req, res, next) {
-  db.table('topic').join('user on topic.user_id = user.id where topic.user_id = ' + req.params.id).select()
+  db.table('topic').join('user on topic.user_id = user.user_id where topic.user_id = ' + req.params.id).select()
   .then(function (data) {
     return res.render('user', { req: req, personalTopics: data });
   });

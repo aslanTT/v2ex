@@ -8,17 +8,20 @@ router.get("/:id", function(req, res, next) {
     topic: {},
     comments: []
   }
-  db.table('topic').join('user on topic.user_id = user.id where topic.user_id = ' + req.params.id).select()
+  db.table('comment').join(
+      'user on comment.user_id = user.user_id where comment.topic_id = '  + req.params.id,
+      'join topic on comment.topic_id = topic.topic_id'
+    ).select()
   .then(function (data) {
-    options.topic = data[0];
-    return db.table('comment').join('topic on comment.topic_id = topic.id where comment.topic_id = ' + data[0].id).select()
-  }).then(function (data) {
     options.comments = data;
-    console.log(data);
+    return db.table('topic').join('user on topic.user_id = user.user_id where topic.topic_id = ' + req.params.id).select();
+  }).then(function (data) {
+    options.topic = data[0];
     return res.render('topic', options);
   }).catch(function (error) {
-    return res.send(JSON.stringify({'message':'fail'}))
+    console.log(error);
   });
+
 });
 
 module.exports = router;
