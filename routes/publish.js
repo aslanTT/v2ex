@@ -10,10 +10,10 @@ router.post("/", function(req, res, next) {
     user_id: req.cookies.user_id,
     node_id: req.body.node_id,
     title: req.body.title,
-    content: req.body.content,
+    topic_content: req.body.content,
     date: new Date().toLocaleString()
   }).then(function () {
-    return res.redirect('/publish');
+    return res.redirect('/');
   }).catch(function (error) {
     return res.send(JSON.stringify({'message':'fail'}));
   });

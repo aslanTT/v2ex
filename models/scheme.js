@@ -18,7 +18,7 @@ var topic = 'create table topic(' +
           'user_id int,' +
           'node_id int,' +
           'title varchar(255),' +
-          'content text,' +
+          'topic_content text,' +
           'clicks int,' +
           'date varchar(255),' +
           'primary key(id)' +
@@ -28,7 +28,7 @@ var comment = 'create table comment(' +
           'id int auto_increment,' +
           'user_id int,' +
           'topic_id int,' +
-          'content text,' +
+          'comment_content text,' +
           'date varchar(255),' +
           'primary key(id)' +
           ');';
@@ -45,12 +45,12 @@ var message = 'create table message(' +
               'receiver_id int,' +
               'sender_id int,' +
               'title varchar(255),' +
-              'content text,' +
+              'message_content text,' +
               'date varchar(255),' +
               'primary key(id)' +
               ');';
 
-var sql = user
+var sql = topic
 console.log(sql);
 db.execute(sql).then(function (data) {
   console.log(data);

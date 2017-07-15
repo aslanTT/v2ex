@@ -6,7 +6,7 @@ router.post("/", function(req, res, next) {
   db.table('comment').add({
     user_id: req.cookies.user_id,
     topic_id: req.body.topic_id,
-    content: req.body.content,
+    comment_content: req.body.content,
     date: new Date().toLocaleString()
   }).then(function () {
     return res.redirect('/topic/' + req.body.topic_id);

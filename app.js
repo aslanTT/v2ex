@@ -56,10 +56,10 @@ app.all('*',function (req, res, next) {
     }).select();
   }).then(function (data) {
       app.locals.user = data.length === 0 ? null : data[0];
+      next();
   }).catch(function (error) {
       console.log(error);
   });
-  next();
 });
 
 app.use('/', index);

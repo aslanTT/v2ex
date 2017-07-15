@@ -37,7 +37,7 @@
                   <p class="hr">
                     <span>
                       <a href="#">
-                        <%= topic.user_id %>
+                        <%= topic.username %>
                       </a> &nbsp
                     </span>
                     <span>
@@ -48,7 +48,7 @@
                     </span>
                   </p>
                   <p class="hr">
-                    <%= topic.content %>
+                    <%= topic.topic_content %>
                   </p>
                   <p>
                     <div class="list-node">
@@ -68,7 +68,7 @@
                     </div>
                     <div class="topic-summary">
                       <p>
-                        <%= comments[i].content %>
+                        <%= comments[i].comment_content %>
                         &nbsp&nbsp <%= comments[i].date %>
                       </p>
                       <span>
