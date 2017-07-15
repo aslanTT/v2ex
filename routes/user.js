@@ -3,21 +3,10 @@ var router = express.Router();
 var db = require('../models/db');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  var options = {
-    req: req,
-    nodes: [],
-    topics: []
-  };
-  db.table('node').select()
+router.get('/:id', function(req, res, next) {
+  db.table('topic').join('user on topic.user_id = user.id where topic.user_id = ' + req.params.id).select()
   .then(function (data) {
-    options.nodes = data;
-    return db.table('topic').select();
-  }).then(function (data) {
-    options.topics = data;
-    return res.render('user', options);
-  }).catch(function (error) {
-    return res.send(JSON.stringify({'message':'fail'}))
+    return res.render('user', { req: req, personalTopics: data });
   });
 });
 

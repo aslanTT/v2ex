@@ -1,4 +1,4 @@
-<% if(user !== {}){ %>
+<% if(user !== null){ %>
 <ul class="list-group">
   <li class="list-group-item">
     <div class="user">
@@ -6,7 +6,9 @@
         <img src="/images/1.jpg" width="50" height="50" alt="">
       </div>
       <div class="user-name">
-        <%= user.username %>
+        <a href="<%= '/user/' + user.id %>">
+          <%= user.username %>
+        </a>
       </div>
     </div>
   </li>

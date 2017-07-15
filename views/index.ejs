@@ -43,7 +43,7 @@
                         <%= topics[i].title %>
                       </a>
                       <p>
-                        <a href="#"><%= req.cookies.username %></a>
+                        <a href="<%= '/user/' + topics[i].user_id %>"><%= topics[i].username %></a>
                       </p>
                     </div>
                   </div>

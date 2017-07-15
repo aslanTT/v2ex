@@ -43,18 +43,24 @@
                 </li>
                 <li class="list-group-item">
                   <div class="new-message">
+                    <span class="glyphicon glyphicon-envelope"></span> &nbsp <a href="/message">发信</a>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="new-message">
                     <span class="glyphicon glyphicon-envelope"></span> &nbsp 未读来信
                   </div>
                 </li>
                 <li class="list-group-item">
                   <div class="user-money">
-                    <span class="glyphicon glyphicon-usd"></span> &nbsp 金币：1000
+                    <span class="glyphicon glyphicon-usd"></span> &nbsp 金币：
+                    <%= user.money %>
                   </div>
                 </li>
               </ul>
             </div>
             <ul class="list-group">
-              <% for(var i=0; i<topics.length; i++){ %>
+              <% for(var i=0; i<personalTopics.length; i++){ %>
                 <li class="list-group-item">
                   <div class="topic">
                     <div class="topic-logo">
@@ -62,9 +68,11 @@
                     </div>
                     <div class="topic-summary">
                       <p>
-                        <%= topics[i].title %>
+                        <a href="<%= '/topic/' + personalTopics[i].id %>">
+                          <%= personalTopics[i].title %>
+                        </a>
                       </p>
-                      <span><a href="#"><%= topics[i].user_id %></a></span>
+                      <span><a href="<%= '/user/' + personalTopics[i].user_id  %>"><%= personalTopics[i].username %></a></span>
                     </div>
                   </div>
                 </li>

@@ -4,7 +4,7 @@
   <li role="presentation"><a href="/login">登录</a></li>
   <li role="presentation"><a href="/register">注册</a></li>
   <% } else if(user_id > 0) { %>
-    <li role="presentation"><a href="/user">个人中心</a></li>
+    <li role="presentation"><a href="<%= '/user/' + user_id %>">个人中心</a></li>
   <li role="presentation"><a href="/logout">退出</a></li>
   <% } %>
 </ul>
