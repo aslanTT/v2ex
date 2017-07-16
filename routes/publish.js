@@ -12,7 +12,7 @@ router.post("/", function(req, res, next) {
     title: req.body.title,
     topic_content: req.body.content,
     date: new Date().toLocaleString()
-  }).then(function () {
+  }).then(function (data) {
     return res.redirect('/');
   }).catch(function (error) {
     return res.send(JSON.stringify({'message':'fail'}));
