@@ -58,6 +58,11 @@ app.all('*',function (req, res, next) {
     }).select();
   }).then(function (data) {
       app.locals.user = data.length === 0 ? null : data[0];
+      return db.table('message').where({
+        receiver_id: req.cookies.user_id
+      }).select()
+  }).then(function (data) {
+      app.locals.message = data;
       next();
   }).catch(function (error) {
       console.log(error);

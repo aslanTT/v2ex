@@ -11,7 +11,7 @@ router.get('/:id', function (req, res, next) {
 
 router.post('/', function (req, res, next) {
   db.table('message').add({
-    receiver_id: req.body.reciever,
+    receiver_id: req.body.receiver,
     sender_id: req.cookies.user_id,
     title: req.body.title,
     message_content: req.body.content,
