@@ -44,7 +44,7 @@ app.all('*',function (req, res, next) {
     app.locals.nodes = data;
     return db.table('topic').join('user on topic.user_id = user.user_id').select();
   }).then(function (data) {
-    app.locals.topics = data;
+    app.locals.topics = data.slice(0,10);
     return db.table('user').count('user_id');
   }).then(function (data) {
     app.locals.userCount = data;
