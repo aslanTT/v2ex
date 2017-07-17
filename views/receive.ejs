@@ -49,7 +49,7 @@
                 <li class="list-group-item">
                   <div class="new-message">
                     <span class="glyphicon glyphicon-envelope"></span> &nbsp
-                    <a href="/receive">未读来信：<%= message.length %></a>
+                    <a href="/message/list">未读来信：<%= message.length %></a>
                   </div>
                 </li>
                 <li class="list-group-item">
@@ -61,7 +61,7 @@
               </ul>
             </div>
             <ul class="list-group">
-              <% for(var i=0; i<personalTopics.length; i++){ %>
+              <% for(var i=0; i<message.length; i++){ %>
                 <li class="list-group-item">
                   <div class="topic">
                     <div class="topic-logo">
@@ -69,11 +69,9 @@
                     </div>
                     <div class="topic-summary">
                       <p>
-                        <a href="<%= '/topic/' + personalTopics[i].id %>">
-                          <%= personalTopics[i].title %>
-                        </a>
+                        <%= message[i].title %>
                       </p>
-                      <span><a href="<%= '/user/' + personalTopics[i].user_id  %>"><%= personalTopics[i].username %></a></span>
+                      <span><%= message[i].message_content %></span>
                     </div>
                   </div>
                 </li>

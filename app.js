@@ -17,6 +17,7 @@ var comment = require('./routes/comment');
 var node = require('./routes/node');
 var sign = require('./routes/sign');
 var message = require('./routes/message');
+var receive = require('./routes/receive');
 var app = express();
 
 // view engine setup
@@ -76,6 +77,7 @@ app.use('/user', user);
 app.use('/login', login);
 app.use('/comment', comment);
 app.use('/message', message);
+app.use('/receive', receive);
 app.use('/register', register);
 app.use('/node', node);
 app.use('/sign', sign);
