@@ -3,9 +3,10 @@ var router = express.Router();
 var db = require('../models/db');
 /* GET home page. */
 router.get('/:id', function (req, res, next) {
+  var receiver_id = req.params.id;
   res.render('message', {
     req: req,
-    reciever: req.params.id
+    receiver: receiver_id
    });
 });
 
