@@ -42,7 +42,6 @@ router.get('/node/page/:page_id', function (req, res, next) {
   db.table('collection').join('node on collection.foreign_id = node.id where collection.collection_type = 1 and collection.user_id = ' + user_id).select()
   .then(function (data) {
     var nodeCollections = data;
-    console.log(data);
     options.len = Math.ceil(nodeCollections.length / 5);
     options.nodeCollections = nodeCollections.slice(5*(page_id-1),5*page_id);
     return res.render('nodeCollection', options);
@@ -70,15 +69,23 @@ router.get('/node/:id/delete', function (req, res, next) {
 });
 
 router.get('/topic', function (req, res, next) {
-  var options = { req: req};
+  res.redirect('/collection/topic/page/1');
+});
+
+router.get('/topic/page/:page_id', function (req, res, next) {
+  var options = { req: req };
+  var page_id = req.params.page_id;
+  var user_id = req.cookies.user_id;
   db.table('collection').join('topic on collection.foreign_id = topic.topic_id where collection.collection_type = 2 and collection.user_id = ' + req.cookies.user_id).select()
   .then(function (data) {
-    options.topicCollections = data;
+    var topicCollections = data;
+    options.len = Math.ceil(topicCollections.length / 5);
+    options.topicCollections = topicCollections.slice(5*(page_id-1),5*page_id);
     return res.render('topicCollection', options);
   })
   .catch(function (error) {
     console.error(error);
-  })
+  });
 });
 
 router.get('/topic/:id', function(req, res, next) {
