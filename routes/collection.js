@@ -88,6 +88,7 @@ router.get('/topic/page/:page_id', function (req, res, next) {
   });
 });
 
+
 router.get('/topic/:id', function(req, res, next) {
   var options = {
     req: req
@@ -140,15 +141,7 @@ router.get('/topic/:id/delete', function (req, res, next) {
 });
 
 router.get('/people', function (req, res, next) {
-  var options = { req: req};
-  db.table('collection').join('user on collection.foreign_id = user.user_id where collection.collection_type = 3 and collection.user_id = ' + req.cookies.user_id).select()
-  .then(function (data) {
-    options.peopleCollections = data;
-    return res.render('peopleCollection', options);
-  })
-  .catch(function (error) {
-    console.error(error);
-  })
+  res.redirect('/collection/people/page/1');
 });
 
 router.get('/people/:id', function(req, res, next) {
@@ -196,6 +189,22 @@ router.get('/people/:id/delete', function (req, res, next) {
   .then(function (data) {
     console.log(data);
     return res.redirect('/collection/people')
+  })
+  .catch(function (error) {
+    console.error(error);
+  });
+});
+
+router.get('/people/page/:page_id', function (req, res, next) {
+  var options = { req: req };
+  var page_id = req.params.page_id;
+  var user_id = req.cookies.user_id;
+  db.table('collection').join('user on collection.foreign_id = user.user_id where collection.collection_type = 3 and collection.user_id = ' + req.cookies.user_id).select()
+  .then(function (data) {
+    var peopleCollections = data;
+    options.len = Math.ceil(peopleCollections.length / 5);
+    options.peopleCollections = peopleCollections.slice(5*(page_id-1),5*page_id);
+    return res.render('peopleCollection', options);
   })
   .catch(function (error) {
     console.error(error);
