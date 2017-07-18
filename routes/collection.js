@@ -131,4 +131,67 @@ router.get('/topic/:id/delete', function (req, res, next) {
   });
 });
 
+router.get('/people', function (req, res, next) {
+  var options = { req: req};
+  db.table('collection').join('user on collection.foreign_id = user.user_id where collection.collection_type = 3 and collection.user_id = ' + req.cookies.user_id).select()
+  .then(function (data) {
+    options.peopleCollections = data;
+    return res.render('peopleCollection', options);
+  })
+  .catch(function (error) {
+    console.error(error);
+  })
+});
+
+router.get('/people/:id', function(req, res, next) {
+  var options = {
+    req: req
+  };
+  db.table('collection').where({
+    collection_type: 3,
+    user_id: req.cookies.user_id,
+    foreign_id: req.params.id
+  }).select()
+  .then(function (data) {
+    if (data.length === 0) {
+      return db.table('collection').add({
+        collection_type: 3,
+        foreign_id: req.params.id,
+        user_id: req.cookies.user_id,
+        date: new Date().toLocaleString()
+      });
+    } else {
+      return res.send(JSON.stringify({}));
+    };
+  })
+  .then(function (data) {
+    return db.table('collection').join('user on collection.foreign_id = user.user_id where collection.user_id = ' + req.cookies.user_id).select();
+  })
+  .then(function (data) {
+    options.topicCollections = data;
+    return res.redirect('/collection/people');
+  })
+  .catch(function (error) {
+    console.error(error);
+  });
+});
+
+router.get('/people/:id/delete', function (req, res, next) {
+  var options = {
+    req: req
+  };
+  db.table('collection').where({
+    collection_type: 3,
+    user_id: ['=', req.cookies.user_id],
+    foreign_id: ['=', req.params.id]
+  }).delete()
+  .then(function (data) {
+    console.log(data);
+    return res.redirect('/collection/people')
+  })
+  .catch(function (error) {
+    console.error(error);
+  });
+});
+
 module.exports = router;

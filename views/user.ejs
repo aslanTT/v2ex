@@ -42,6 +42,13 @@
                   </div>
                 </li>
                 <li class="list-group-item">
+                  <div class="new-topic">
+                    <span class="glyphicon glyphicon-pencil"></span> &nbsp
+                    <a href="/collection/people/<%= user.user_id %>">特别关注 | </a>
+                    <a href="/collection/people/<%= user.user_id %>/delete">取消关注</a>
+                  </div>
+                </li>
+                <li class="list-group-item">
                   <div class="new-message">
                     <span class="glyphicon glyphicon-envelope"></span> &nbsp <a href="<%= '/message/' + user.user_id %>">发信</a>
                   </div>
