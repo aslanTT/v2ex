@@ -3,16 +3,7 @@ var router = express.Router();
 var db = require('../models/db')
 /* GET home page. */
 router.get('/node', function(req, res, next) {
-  var options = {
-    req: req
-  };
-  db.table('collection').join('node on collection.foreign_id = node.id where collection.collection_type = 1 and collection.user_id = ' + req.cookies.user_id).select()
-  .then(function (data) {
-    options.nodeCollections = data;
-    return res.render('nodeCollection', options);
-  }).catch(function (error) {
-    console.error(error);
-  });
+  res.redirect('/collection/node/page/1');
 });
 
 router.get('/node/:id', function(req, res, next) {
@@ -20,9 +11,9 @@ router.get('/node/:id', function(req, res, next) {
     req: req
   };
   db.table('collection').where({
-    foreign_id: ['=', 1],
-    user_id: ['=', req.cookies.user_id],
-    foreign_id: ['=', req.params.id]
+    foreign_id: 1,
+    user_id: req.cookies.user_id,
+    foreign_id: req.params.id
   }).select()
   .then(function (data) {
     if (data.length === 0) {
@@ -37,17 +28,27 @@ router.get('/node/:id', function(req, res, next) {
     };
   })
   .then(function (data) {
-    return db.table('collection').join('node on collection.foreign_id = node.id').where({
-      user_id: req.cookies.user_id
-    }).select();
-  })
-  .then(function (data) {
-    options.nodeCollections = data;
-    return res.render('nodeCollection', options);
+    return res.redirect('/collection/node');
   })
   .catch(function (error) {
     console.error(error);
   });
+});
+
+router.get('/node/page/:page_id', function (req, res, next) {
+  var options = { req: req };
+  var page_id = req.params.page_id;
+  var user_id = req.cookies.user_id;
+  db.table('collection').join('node on collection.foreign_id = node.id where collection.collection_type = 1 and collection.user_id = ' + user_id).select()
+  .then(function (data) {
+    var nodeCollections = data;
+    console.log(data);
+    options.len = Math.ceil(nodeCollections.length / 5);
+    options.nodeCollections = nodeCollections.slice(5*(page_id-1),5*page_id);
+    return res.render('nodeCollection', options);
+  }).catch(function (error) {
+    console.error(error);
+  })
 });
 
 router.get('/node/:id/delete', function (req, res, next) {
