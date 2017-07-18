@@ -50,42 +50,25 @@ var message = 'create table message(' +
               'primary key(message_id)' +
               ');';
 
+var collection = 'create table collection(' +
+                 'collection_id int auto_increment,' +
+                 'collection_type int,' +
+                 'foreign_id int,' +
+                 'user_id int,' +
+                 'date varchar(255),' +
+                 'primary key(collection_id)' +
+                 ');';
+
 var sqls = []
-sqls.push(user);
-sqls.push(topic);
-sqls.push(comment);
-sqls.push(message);
-// sqls.map(function (sql, index) {
-//   db.execute(sql).then(function (data) {
-//     console.log(data);
-//   }).catch(function (error) {
-//     console.log(error);
-//   });
-// });
-// db.table('comment').join({
-//   topic: {
-//     join: 'left',
-//     on: ['topic_id', 'topic_id']
-//   },
-//   user: {
-//     join: 'right',
-//     on: ['user_id','user_id']
-//   }
-// }).select().then(function (data) {
-//   console.log(data);
-// }).catch(function (error) {
-//   console.log(error);
-// })
-db.table('comment').join({
-  table: 'topic',
-  join: 'left',
-  on: ['topic_id', 'topic_id']
-}).join({
-  table: 'user',
-  join: 'right',
-  on: ['user_id','user_id']
-}).select().then(function (data) {
-  console.log(data);
-}).catch(function (error) {
-  console.log(error);
+// sqls.push(user);
+// sqls.push(topic);
+// sqls.push(comment);
+// sqls.push(message);
+sqls.push(collection);
+sqls.map(function (sql, index) {
+  db.execute(sql).then(function (data) {
+    console.log(data);
+  }).catch(function (error) {
+    console.log(error);
+  });
 });

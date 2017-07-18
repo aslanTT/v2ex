@@ -29,6 +29,9 @@
                 <li><a href="/">v2ex</a></li>
                 <li class="active"><a href="/node/<%= node.id %>"><%= node.name %></a></li>
               </ol>
+              <a class="btn btn-primary" href="/publish">创建新主题</a>
+              <a class="btn btn-primary" href="/collection/node/<%= node.id %>">加入收藏</a>
+              <a class="btn btn-primary" href="/collection/node/<%= node.id %>/delete">取消收藏</a>
             </div>
             <ul class="list-group">
               <% for(var i=0; i < topics.length; i++){ %>
